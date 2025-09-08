@@ -1,76 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Cybersecurity Blog</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #0d1117;
-      color: #e6edf3;
-    }
-    header {
-      background: #161b22;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #30363d;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    nav a {
-      margin: 0 10px;
-      color: #58a6ff;
-      text-decoration: none;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-    }
-    article {
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #30363d;
-    }
-    article h2 {
-      color: #79c0ff;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      border-top: 2px solid #30363d;
-      font-size: 0.9em;
-      background: #161b22;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>My Cybersecurity Blog</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Write-ups</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+---
+layout: default
+---
 
-  <main>
-    <article>
-      <h2>🔍 Analyzing Mustang Panda’s ToneShell Campaign</h2>
-      <p><em>Posted on September 8, 2025</em></p>
-      <p>
-        In this post, I break down Mustang Panda’s recent phishing activity using malicious PDFs with embedded payloads...
-      </p>
-      <a href="#">Read more →</a>
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
+
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+      <div>{{ post.date  | date: "%B %-d, %Y" }}</div>
+
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
     </article>
-
-    <article>
-      <h2>🛡️
+  {% endfor %}
+</div>
