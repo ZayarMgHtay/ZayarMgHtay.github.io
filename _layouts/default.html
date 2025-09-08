@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="{{ '/assets/js/respond.js' | relative_url }}"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="{{ '/assets/css/ie.css' | relative_url }}">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {% include head-custom.html %}
+
+{% seo %}
+<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
+  </head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LF3TE0NGV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9LF3TE0NGV');
+  </script>
+  <body>
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <a id="a-title" href="{{ '/' | relative_url }}">
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          </a>
+          <p>{{ site.description | default: site.github.project_tagline }}</p>
+          <hr>
+          <a style="margin-right: 15px" href="{{ site.baseurl }}/about">About</a>
+          <a style="margin-right: 15px" href="{{ site.baseurl }}/">Blog</a>
+          <a style="margin-right: 15px" href="{{ site.baseurl }}/research">Research</a>
+          <a style="margin-right: 15px" href="{{ site.baseurl }}/ctf">Writeup/Challenge</a>
+
+        </div>
+
+        {{ content }}
+      </section>
+    </div>
+
+
+	<!-- <footer style="border-top: 1px dashed #b5e853;"> -->
+	 <!-- <div class="container"> -->
+		<!-- <a href="https://www.linkedin.com/in/christophereng">LinkedIn</a> -->
+	 <!-- </div> -->
+	<!-- </footer> -->
+  </body>
+</html>
