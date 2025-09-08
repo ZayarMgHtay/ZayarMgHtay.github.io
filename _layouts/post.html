@@ -1,0 +1,72 @@
+
+---
+layout: default
+---
+<style>
+  .navposts {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+
+<div id="post">
+
+<small>{{ page.date | date: "%-d %B %Y" }}</small>
+<h1>{{ page.title }}</h1>
+
+<p class="view">by {{ page.author | default: site.author }}</p>
+
+<div class="navposts" style="margin-bottom: 20px">
+  <div>
+    {% if page.previous.url %}
+    <a href="{{page.previous.url}}">Previous Post</a>
+    {% endif %}
+  </div>
+  <div>
+    {% if page.next.url %}
+    <a href="{{page.next.url}}">Next Post</a>
+    {%endif %}
+  </div>
+</div>
+
+{{content}}
+
+{% if page.tags %}
+  <small> tags:
+    {% for tag in page.tags %}
+        <a href="{{site.baseurl}}/tags.html#{{tag | slugize}}">
+            #{{ tag }}
+        </a>
+    {% endfor %}
+  </small>
+{% endif %}
+
+<div class="navposts" style="margin-top: 20px">
+  <div>
+    {% if page.previous.url %}
+    <a href="{{page.previous.url}}">Previous Post</a>
+    {% endif %}
+  </div>
+  <div>
+    {% if page.next.url %}
+    <a href="{{page.next.url}}">Next Post</a>
+    {%endif %}
+  </div>
+</div>
+
+<script src="https://giscus.app/client.js"
+        data-repo="ZayarMgHtay/ZayarMgHtay.github.io"
+        data-repo-id="R_kgDONPaN7Q"
+        data-category="Comments"
+        data-category-id="DIC_kwDONPaN7c4ClrPl"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="noborder_dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
