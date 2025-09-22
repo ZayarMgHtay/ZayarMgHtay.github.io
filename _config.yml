@@ -3,6 +3,6 @@ description: Sharing my experiences and knowledge in DFIR,and CTF writeups while
 show_downloads: false
 future: false
 
-remote_theme: pages-themes/minimal@v0.2.0
+remote_theme: pages-themes/midnight@v0.2.0
 plugins:
 - jekyll-remote-theme 
