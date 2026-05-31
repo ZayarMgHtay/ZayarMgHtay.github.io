@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zayar Mg Htay - SOC Analyst & Threat Hunter</title>
+<title>Zayar — SOC Analyst & Threat Hunter</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -722,6 +722,183 @@
     transform: translateY(0);
   }
 
+  /* WRITEUPS */
+  .writeups-section { background: var(--bg); }
+  .writeup-card {
+    border: 1px solid var(--border2);
+    border-radius: var(--border-radius-lg, 8px);
+    background: var(--bg2);
+    margin-bottom: 2px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    cursor: pointer;
+  }
+  .writeup-card:hover { border-color: var(--border); }
+  .writeup-head {
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .writeup-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+  .writeup-meta { flex: 1; }
+  .writeup-title {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .writeup-summary {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+  .writeup-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .writeup-pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .writeup-pill.green {
+    background: rgba(0,255,140,0.06);
+    border-color: rgba(0,255,140,0.2);
+    color: var(--green);
+  }
+  .writeup-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .writeup-arrow {
+    font-size: 18px;
+    color: var(--text3);
+    transition: all 0.3s;
+    font-family: var(--mono);
+  }
+  .writeup-card:hover .writeup-arrow { color: var(--green); transform: translateX(4px); }
+  .writeup-expand {
+    display: none;
+    border-top: 1px solid var(--border2);
+    padding: 0 32px 32px;
+  }
+  .writeup-expand.open { display: block; }
+  .we-section {
+    margin-top: 24px;
+  }
+  .we-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .we-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border2);
+  }
+  .we-steps { list-style: none; padding: 0; }
+  .we-step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .we-step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+    min-width: 20px;
+    margin-top: 2px;
+  }
+  .we-code {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-left: 2px solid var(--green);
+    padding: 12px 16px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 8px;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.6;
+  }
+  .we-finding {
+    background: rgba(0,255,140,0.04);
+    border: 1px solid rgba(0,255,140,0.1);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .we-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .we-ioc {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    padding: 10px 14px;
+  }
+  .we-ioc-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text3);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .we-ioc-val {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text);
+  }
+  .gh-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--green);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    margin-top: 20px;
+    transition: all 0.2s;
+  }
+  .gh-link:hover {
+    background: var(--green-dim);
+    border-color: var(--green);
+  }
+
   /* SCROLLBAR */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -750,11 +927,12 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><span>~/</span>zayar mg htay<span>.sec</span></div>
+  <div class="nav-logo"><span>~/</span>zayar<span>.sec</span></div>
   <ul class="nav-links">
     <li><a href="#skills">skills</a></li>
     <li><a href="#experience">experience</a></li>
     <li><a href="#labs">labs</a></li>
+    <li><a href="#writeups">writeups</a></li>
     <li><a href="#certs">certs</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
@@ -771,7 +949,7 @@
   <div class="hero-content">
     <div class="hero-tag">SOC ANALYST · BLUE TEAM · DUBAI</div>
     <div class="hero-name">
-      <div class="line1">ZAYAR MG HTAY</div>
+      <div class="line1">ZAYAR</div>
       <div class="line2">THREAT HUNTER</div>
     </div>
     <div class="hero-title">// Linux Admin · Incident Response · Threat Hunting</div>
@@ -870,7 +1048,7 @@
         <span class="skill-tag">IBM QRadar</span>
         <span class="skill-tag">ELK Stack</span>
         <span class="skill-tag">Azure Sentinel</span>
-        <span class="skill-tag">Sysmon</span>
+        <span class="skill-tag">Event IDs</span>
       </div>
     </div>
     <div class="skill-card fade-up">
@@ -883,7 +1061,7 @@
         <span class="skill-tag">Zeek</span>
         <span class="skill-tag">Snort</span>
         <span class="skill-tag">Firewall Logs</span>
-        <span class="skill-tag">Suricata</span>
+        <span class="skill-tag">DNS Analysis</span>
       </div>
     </div>
     <div class="skill-card fade-up">
@@ -896,7 +1074,7 @@
         <span class="skill-tag">Entra ID</span>
         <span class="skill-tag">Defender XDR</span>
         <span class="skill-tag">Azure</span>
-        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">KQL</span>
       </div>
     </div>
   </div>
@@ -912,7 +1090,7 @@
   <div class="exp-list">
     <div class="exp-item fade-up">
       <div class="exp-left">
-        <div class="exp-date">2025 — PRESENT</div>
+        <div class="exp-date">2024 — PRESENT</div>
         <div class="exp-company">IT Company</div>
         <div class="exp-loc">DUBAI, UAE</div>
       </div>
@@ -930,7 +1108,7 @@
     </div>
     <div class="exp-item fade-up">
       <div class="exp-left">
-        <div class="exp-date">2025</div>
+        <div class="exp-date">2024</div>
         <div class="exp-company">SOC Company</div>
         <div class="exp-loc">DUBAI, UAE</div>
       </div>
@@ -938,6 +1116,7 @@
         <div class="exp-role">SOC Analyst Intern</div>
         <div class="exp-desc">Monitored security alerts across enterprise environments using Splunk, ELK, and IBM QRadar. Performed initial alert triage, investigated suspicious activities across Windows event logs, firewall, and endpoint sources, and supported the SOC team in identifying and escalating security incidents. Gained real-world experience in the full triage-to-escalation workflow in a 24/7 SOC environment.</div>
         <div class="exp-pills">
+          <span class="exp-pill">Splunk</span>
           <span class="exp-pill">IBM QRadar</span>
           <span class="exp-pill">ELK Stack</span>
           <span class="exp-pill">Alert Triage</span>
@@ -985,10 +1164,22 @@
         <span class="lab-tool">MXToolbox</span>
       </div>
     </div>
-    </div>
     <div class="lab-card fade-up">
       <div class="lab-arrow">↗</div>
       <div class="lab-num">LAB_003</div>
+      <div class="lab-title">LSASS Credential Dumping</div>
+      <div class="lab-mitre">T1003.001 · Credential Access</div>
+      <div class="lab-desc">Detected credential dumping attempt via Sysmon EventID 10 with GrantedAccess 0x1010 targeting lsass.exe from an unsigned process. Identified Mimikatz artifacts in CallTrace, pivoted to EventID 4624 for post-dump lateral movement indicators.</div>
+      <div class="lab-tools">
+        <span class="lab-tool">Sysmon EID 10</span>
+        <span class="lab-tool">Splunk</span>
+        <span class="lab-tool">0x1010 Access</span>
+        <span class="lab-tool">EventID 4624</span>
+      </div>
+    </div>
+    <div class="lab-card fade-up">
+      <div class="lab-arrow">↗</div>
+      <div class="lab-num">LAB_004</div>
       <div class="lab-title">LOLBin — Certutil Payload Download</div>
       <div class="lab-mitre">T1218 · T1105 · Defense Evasion</div>
       <div class="lab-desc">Investigated Living off the Land attack using certutil.exe to download and decode a remote payload. AV bypassed due to signed Microsoft binary. Detection built around -urlcache and -decode flags in process command-line arguments.</div>
@@ -1001,7 +1192,7 @@
     </div>
     <div class="lab-card fade-up">
       <div class="lab-arrow">↗</div>
-      <div class="lab-num">LAB_004</div>
+      <div class="lab-num">LAB_005</div>
       <div class="lab-title">DNS Exfiltration Detection</div>
       <div class="lab-mitre">T1048.003 · Exfiltration</div>
       <div class="lab-desc">Identified data exfiltration via DNS subdomain encoding. Detected abnormally long subdomains exceeding 30 characters with Base64-encoded data chunks. Built SPL query based on subdomain length and query volume anomalies. Decoded sample chunk confirming sensitive data leakage.</div>
@@ -1029,10 +1220,177 @@
   </div>
 </section>
 
+<!-- WRITEUPS -->
+<section class="writeups-section" id="writeups">
+  <div class="section-header fade-up">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Investigation Writeups</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- AMADEY LAB -->
+  <div class="writeup-card fade-up" onclick="toggleWriteup('amadey')">
+    <div class="writeup-head">
+      <div class="writeup-num">WR_001</div>
+      <div class="writeup-meta">
+        <div class="writeup-title">Amadey Malware — Memory Forensics</div>
+        <div class="writeup-summary">Full memory dump analysis of an Amadey-infected Windows 7 workstation using Volatility 3. Identified the malicious process masquerading as lssass.exe, extracted the C2 server IP, traced downloaded payloads, and mapped persistence mechanisms.</div>
+        <div class="writeup-pills">
+          <span class="writeup-pill green">Memory Forensics</span>
+          <span class="writeup-pill green">Malware Analysis</span>
+          <span class="writeup-pill">Volatility 3</span>
+          <span class="writeup-pill">Windows Forensics</span>
+          <span class="writeup-pill">C2 Detection</span>
+          <span class="writeup-pill">T1055 · T1036</span>
+        </div>
+      </div>
+      <div class="writeup-toggle">
+        <span class="writeup-arrow" id="arrow-amadey">→</span>
+      </div>
+    </div>
+    <div class="writeup-expand" id="expand-amadey">
+      <div class="we-section">
+        <div class="we-label">Overview</div>
+        <div class="we-finding">This lab focuses on endpoint forensics using Volatility 3 on a Windows 7 memory dump from a machine infected with the Amadey malware — a modular info-stealer known for credential theft, persistence, and downloading additional payloads. The goal was to identify the malicious process, extract C2 communications, and map persistence mechanisms.</div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Investigation Steps</div>
+        <ol class="we-steps">
+          <li class="we-step"><span class="we-step-num">01</span>Listed all running processes using windows.pslist to identify the suspicious process masquerading as a legitimate Windows binary. A process named lssass.exe (note the double 's') was identified — spoofing the legitimate lsass.exe to evade detection.</li>
+          <li class="we-step"><span class="we-step-num">02</span>Used windows.cmdline with the suspicious PID to extract the full file path. The process was executing from an unusual temp directory rather than System32, confirming it was not a legitimate Windows process.</li>
+          <li class="we-step"><span class="we-step-num">03</span>Ran windows.netscan to extract active and closed network connections from memory. Identified the C2 server IP address associated with the malicious process making outbound connections.</li>
+          <li class="we-step"><span class="we-step-num">04</span>Used windows.memmap to dump the memory region of the malicious process, then analyzed the dump with strings to extract HTTP GET requests — revealing the distinct files being fetched from the C2 server.</li>
+          <li class="we-step"><span class="we-step-num">05</span>Used windows.filescan filtered by the malware filename to identify full file paths on disk — locating where downloaded components were stored for execution.</li>
+          <li class="we-step"><span class="we-step-num">06</span>Mapped the process tree using windows.pstree to identify the child process spawned by lssass.exe to execute the downloaded payloads.</li>
+          <li class="we-step"><span class="we-step-num">07</span>Scanned for additional persistence locations using windows.filescan filtered by the malware name — discovering secondary file locations used by Amadey to maintain persistence across reboots.</li>
+        </ol>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Key Volatility Commands</div>
+        <div class="we-code">vol -f 'Windows 7 x64-Snapshot4.vmem' windows.pslist
+vol -f 'Windows 7 x64-Snapshot4.vmem' windows.cmdline --pid &lt;PID&gt;
+vol -f 'Windows 7 x64-Snapshot4.vmem' windows.netscan
+vol -f 'Windows 7 x64-Snapshot4.vmem' windows.memmap --pid &lt;PID&gt; --dump
+vol -f 'Windows 7 x64-Snapshot4.vmem' windows.filescan | grep -E "&lt;FILE_NAME&gt;"
+vol -f 'Windows 7 x64-Snapshot4.vmem' windows.pstree
+vol -f 'Windows 7 x64-Snapshot4.vmem' windows.filescan | grep "lssass" -E</div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Key Findings</div>
+        <div class="we-grid">
+          <div class="we-ioc"><div class="we-ioc-type">Malicious Process</div><div class="we-ioc-val">lssass.exe (T1036 masquerading)</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Location</div><div class="we-ioc-val">Temp directory — not System32</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Technique</div><div class="we-ioc-val">C2 outbound connections</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Persistence</div><div class="we-ioc-val">Multiple file locations on disk</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Payload Delivery</div><div class="we-ioc-val">HTTP GET requests to C2</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Child Process</div><div class="we-ioc-val">Spawned to execute downloaded files</div></div>
+        </div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">MITRE ATT&CK Mapping</div>
+        <div class="writeup-pills">
+          <span class="writeup-pill green">T1036 — Masquerading</span>
+          <span class="writeup-pill green">T1055 — Process Injection</span>
+          <span class="writeup-pill green">T1071 — C2 via HTTP</span>
+          <span class="writeup-pill green">T1105 — Ingress Tool Transfer</span>
+          <span class="writeup-pill green">T1547 — Boot/Logon Persistence</span>
+        </div>
+      </div>
+      <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup/blob/main/Amadey%20Lab.md" target="_blank" class="gh-link">[gh] View full writeup on GitHub →</a>
+    </div>
+  </div>
+
+  <!-- SILENT BREACH -->
+  <div class="writeup-card fade-up" onclick="toggleWriteup('silent')">
+    <div class="writeup-head">
+      <div class="writeup-num">WR_002</div>
+      <div class="writeup-meta">
+        <div class="writeup-title">Silent Breach — Disk Forensics & Malware Decryption</div>
+        <div class="writeup-summary">Disk image forensics investigation using FTK Imager. Traced a malicious EXE download through browser history, extracted C2 IP addresses from Windows Mail artifacts, decoded an obfuscated PowerShell ransomware script, and successfully decrypted AES-256-CBC encrypted files using derived key and IV via OpenSSL.</div>
+        <div class="writeup-pills">
+          <span class="writeup-pill green">Disk Forensics</span>
+          <span class="writeup-pill green">Malware Decryption</span>
+          <span class="writeup-pill">FTK Imager</span>
+          <span class="writeup-pill">CyberChef</span>
+          <span class="writeup-pill">OpenSSL</span>
+          <span class="writeup-pill">PowerShell Analysis</span>
+          <span class="writeup-pill">T1486 · T1140</span>
+        </div>
+      </div>
+      <div class="writeup-toggle">
+        <span class="writeup-arrow" id="arrow-silent">→</span>
+      </div>
+    </div>
+    <div class="writeup-expand" id="expand-silent">
+      <div class="we-section">
+        <div class="we-label">Overview</div>
+        <div class="we-finding">A disk forensics investigation on a Windows image belonging to a user named Ethan. The investigation required tracing the download of a malicious executable, analyzing browser artifacts, extracting C2 IP addresses from Windows Mail data, reversing an obfuscated PowerShell encryption script, and decrypting AES-256-CBC encrypted files to recover the flag.</div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Investigation Steps</div>
+        <ol class="we-steps">
+          <li class="we-step"><span class="we-step-num">01</span>Imported the disk image into FTK Imager and located the malicious EXE file. Extracted the MD5 hash directly from FTK Imager's file properties for verification against threat intel databases.</li>
+          <li class="we-step"><span class="we-step-num">02</span>Identified the download URL by examining the Zone.Identifier (ZoneTransfer) alternate data stream attached to the malicious file — this Windows security feature records the URL source of downloaded files.</li>
+          <li class="we-step"><span class="we-step-num">03</span>Determined the download application by extracting and analyzing SQLite browser history databases from both Chrome and Microsoft Edge at their respective AppData paths using DB Browser for SQLite.</li>
+          <li class="we-step"><span class="we-step-num">04</span>Extracted the Windows Mail artifact file HxStore.hxd from the WindowsCommunicationsApps package directory. Analyzed it using Notepad++ with the HEX Editor plugin to extract three C2 IP addresses mentioned in an email.</li>
+          <li class="we-step"><span class="we-step-num">05</span>Used the Strings tool on the malicious EXE to extract a reversed Base64-encoded PowerShell script. Decoded it using two methods: CyberChef (Reverse + From Base64 recipe) and Linux echo command — revealing the encryption password and AES parameters.</li>
+          <li class="we-step"><span class="we-step-num">06</span>Reproduced the PBKDF2 key derivation process from the PowerShell script to extract the exact AES-256-CBC Key and IV values used for encryption — since OpenSSL could not derive them without replicating the original algorithm.</li>
+          <li class="we-step"><span class="we-step-num">07</span>Decrypted the encrypted PDF files (IMF-Secret.enc and IMF-Mission.enc) using OpenSSL with the derived key and IV, verified integrity with the file command, and recovered the secret flag from the decrypted PDFs.</li>
+        </ol>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Key Artifact Paths</div>
+        <div class="we-code">Chrome History:  \AppData\Local\Google\Chrome\User Data\Default\History
+Edge History:    \AppData\Local\Microsoft\Edge\User Data\Default\History
+Windows Mail:    \AppData\Local\Packages\microsoft.windowscommunicationsapps_8wekyb3d8bbwe\LocalState\HxStore.hxd
+Encrypted Files: C:\Users\ethan\Desktop\*.enc</div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Decryption Method</div>
+        <div class="we-code"># Step 1 — Reproduce key derivation (PBKDF2 / RFC2898)
+# Password and salt extracted from reversed Base64 PowerShell script
+# Algorithm: AES-256-CBC, iterations from script parameters
+
+# Step 2 — Decrypt using OpenSSL with derived key and IV
+openssl enc -d -aes-256-cbc -K &lt;hex_key&gt; -iv &lt;hex_iv&gt; -in IMF-Secret.enc -out IMF-Secret.pdf
+
+# Step 3 — Verify decryption
+file IMF-Secret.pdf</div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Key Findings</div>
+        <div class="we-grid">
+          <div class="we-ioc"><div class="we-ioc-type">Malicious File</div><div class="we-ioc-val">EXE with MD5 hash confirmed</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Download Source</div><div class="we-ioc-val">URL from Zone.Identifier ADS</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Browser Used</div><div class="we-ioc-val">Chrome / Edge SQLite history</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">C2 IPs</div><div class="we-ioc-val">3 IPs from HxStore.hxd email</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Encryption</div><div class="we-ioc-val">AES-256-CBC via PBKDF2</div></div>
+          <div class="we-ioc"><div class="we-ioc-type">Obfuscation</div><div class="we-ioc-val">Reversed Base64 PowerShell</div></div>
+        </div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">MITRE ATT&CK Mapping</div>
+        <div class="writeup-pills">
+          <span class="writeup-pill green">T1486 — Data Encrypted for Impact</span>
+          <span class="writeup-pill green">T1140 — Deobfuscate/Decode Files</span>
+          <span class="writeup-pill green">T1059.001 — PowerShell</span>
+          <span class="writeup-pill green">T1005 — Data from Local System</span>
+          <span class="writeup-pill green">T1566 — Phishing / Malicious Download</span>
+        </div>
+      </div>
+      <div class="we-section">
+        <div class="we-label">Key Lesson</div>
+        <div class="we-finding">Malware authors who use hardcoded passwords and static salts in encryption routines create recoverable ciphertexts. By extracting the script, reversing the Base64 obfuscation, and replicating the PBKDF2 key derivation, the encryption was fully reversed — highlighting the importance of randomized cryptographic parameters in secure implementations.</div>
+      </div>
+      <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup/blob/main/Silent%20Breach%20Labs.md" target="_blank" class="gh-link">[gh] View full writeup on GitHub →</a>
+    </div>
+  </div>
+</section>
+
 <!-- CERTIFICATIONS -->
 <section id="certs">
   <div class="section-header fade-up">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2 class="section-title">Certifications</h2>
     <div class="section-line"></div>
   </div>
@@ -1044,15 +1402,15 @@
       <span class="cert-status earned">EARNED</span>
     </div>
     <div class="cert-card fade-up">
-      <div class="cert-badge">eCTHP</div>
-      <div class="cert-name">Certified Threat Hunting Professional</div>
-      <div class="cert-issuer">INE</div>
+      <div class="cert-badge">SC-200</div>
+      <div class="cert-name">Microsoft Security Operations Analyst</div>
+      <div class="cert-issuer">MICROSOFT</div>
       <span class="cert-status pursuing">IN PROGRESS</span>
     </div>
     <div class="cert-card fade-up">
-      <div class="cert-badge">HTB CDSA</div>
-      <div class="cert-name">HTB Certified Defensive Security Analyst</div>
-      <div class="cert-issuer">Hack the box</div>
+      <div class="cert-badge">CySA+</div>
+      <div class="cert-name">CompTIA Cybersecurity Analyst</div>
+      <div class="cert-issuer">COMPTIA</div>
       <span class="cert-status pursuing">PLANNED</span>
     </div>
   </div>
@@ -1061,7 +1419,7 @@
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="section-header fade-up">
-    <span class="section-num">05</span>
+    <span class="section-num">06</span>
     <h2 class="section-title">Contact</h2>
     <div class="section-line"></div>
   </div>
@@ -1073,7 +1431,7 @@
           <div class="contact-link-icon">[✉]</div>
           <div>
             <div class="contact-link-name">Email</div>
-            <div class="contact-link-handle">zayarmghtay@email.com</div>
+            <div class="contact-link-handle">your@email.com</div>
           </div>
         </div>
         <div class="contact-link-arrow">→</div>
@@ -1083,7 +1441,7 @@
           <div class="contact-link-icon">[in]</div>
           <div>
             <div class="contact-link-name">LinkedIn</div>
-            <div class="contact-link-handle">https://www.linkedin.com/in/zayar-mg-htay/</div>
+            <div class="contact-link-handle">linkedin.com/in/yourprofile</div>
           </div>
         </div>
         <div class="contact-link-arrow">→</div>
@@ -1093,7 +1451,17 @@
           <div class="contact-link-icon">[gh]</div>
           <div>
             <div class="contact-link-name">GitHub</div>
-            <div class="contact-link-handle">https://github.com/ZayarMgHtay</div>
+            <div class="contact-link-handle">github.com/yourgithub</div>
+          </div>
+        </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <a href="https://yourportfolio.gitbook.io" class="contact-link fade-up">
+        <div class="contact-link-left">
+          <div class="contact-link-icon">[gb]</div>
+          <div>
+            <div class="contact-link-name">GitBook Portfolio</div>
+            <div class="contact-link-handle">yourportfolio.gitbook.io</div>
           </div>
         </div>
         <div class="contact-link-arrow">→</div>
@@ -1109,6 +1477,15 @@
 </footer>
 
 <script>
+// Writeup toggles
+function toggleWriteup(id) {
+  const expand = document.getElementById('expand-' + id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = expand.classList.contains('open');
+  expand.classList.toggle('open', !isOpen);
+  arrow.textContent = isOpen ? '→' : '↓';
+}
+
 // Custom cursor
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
