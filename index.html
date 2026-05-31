@@ -1229,161 +1229,54 @@
   </div>
 
   <!-- AMADEY LAB -->
-  <div class="writeup-card fade-up" onclick="toggleWriteup('amadey')">
+  <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup/blob/main/Amadey%20Lab.md" target="_blank" class="writeup-card fade-up" style="display:block;text-decoration:none;">
     <div class="writeup-head">
       <div class="writeup-num">WR_001</div>
       <div class="writeup-meta">
         <div class="writeup-title">Amadey Malware — Memory Forensics</div>
-        <div class="writeup-summary">Full memory dump analysis of an Amadey-infected Windows 7 workstation using Volatility 3. Identified the malicious process masquerading as lssass.exe, extracted the C2 server IP, traced downloaded payloads, and mapped persistence mechanisms.</div>
-        <div class="writeup-pills">
+        <div class="writeup-summary">Full memory dump analysis of an Amadey-infected Windows 7 workstation using Volatility 3. Identified the malicious process masquerading as lssass.exe, extracted the C2 server IP, traced downloaded payloads, and mapped persistence mechanisms across 7 investigation steps.</div>
+        <div class="writeup-pills" style="margin-top:12px">
           <span class="writeup-pill green">Memory Forensics</span>
           <span class="writeup-pill green">Malware Analysis</span>
           <span class="writeup-pill">Volatility 3</span>
           <span class="writeup-pill">Windows Forensics</span>
           <span class="writeup-pill">C2 Detection</span>
-          <span class="writeup-pill">T1055 · T1036</span>
+          <span class="writeup-pill">T1036 · T1055 · T1071</span>
         </div>
       </div>
       <div class="writeup-toggle">
-        <span class="writeup-arrow" id="arrow-amadey">→</span>
+        <span class="writeup-arrow">↗</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:4px">github.com</span>
       </div>
     </div>
-    <div class="writeup-expand" id="expand-amadey">
-      <div class="we-section">
-        <div class="we-label">Overview</div>
-        <div class="we-finding">This lab focuses on endpoint forensics using Volatility 3 on a Windows 7 memory dump from a machine infected with the Amadey malware — a modular info-stealer known for credential theft, persistence, and downloading additional payloads. The goal was to identify the malicious process, extract C2 communications, and map persistence mechanisms.</div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Investigation Steps</div>
-        <ol class="we-steps">
-          <li class="we-step"><span class="we-step-num">01</span>Listed all running processes using windows.pslist to identify the suspicious process masquerading as a legitimate Windows binary. A process named lssass.exe (note the double 's') was identified — spoofing the legitimate lsass.exe to evade detection.</li>
-          <li class="we-step"><span class="we-step-num">02</span>Used windows.cmdline with the suspicious PID to extract the full file path. The process was executing from an unusual temp directory rather than System32, confirming it was not a legitimate Windows process.</li>
-          <li class="we-step"><span class="we-step-num">03</span>Ran windows.netscan to extract active and closed network connections from memory. Identified the C2 server IP address associated with the malicious process making outbound connections.</li>
-          <li class="we-step"><span class="we-step-num">04</span>Used windows.memmap to dump the memory region of the malicious process, then analyzed the dump with strings to extract HTTP GET requests — revealing the distinct files being fetched from the C2 server.</li>
-          <li class="we-step"><span class="we-step-num">05</span>Used windows.filescan filtered by the malware filename to identify full file paths on disk — locating where downloaded components were stored for execution.</li>
-          <li class="we-step"><span class="we-step-num">06</span>Mapped the process tree using windows.pstree to identify the child process spawned by lssass.exe to execute the downloaded payloads.</li>
-          <li class="we-step"><span class="we-step-num">07</span>Scanned for additional persistence locations using windows.filescan filtered by the malware name — discovering secondary file locations used by Amadey to maintain persistence across reboots.</li>
-        </ol>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Key Volatility Commands</div>
-        <div class="we-code">vol -f 'Windows 7 x64-Snapshot4.vmem' windows.pslist
-vol -f 'Windows 7 x64-Snapshot4.vmem' windows.cmdline --pid &lt;PID&gt;
-vol -f 'Windows 7 x64-Snapshot4.vmem' windows.netscan
-vol -f 'Windows 7 x64-Snapshot4.vmem' windows.memmap --pid &lt;PID&gt; --dump
-vol -f 'Windows 7 x64-Snapshot4.vmem' windows.filescan | grep -E "&lt;FILE_NAME&gt;"
-vol -f 'Windows 7 x64-Snapshot4.vmem' windows.pstree
-vol -f 'Windows 7 x64-Snapshot4.vmem' windows.filescan | grep "lssass" -E</div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Key Findings</div>
-        <div class="we-grid">
-          <div class="we-ioc"><div class="we-ioc-type">Malicious Process</div><div class="we-ioc-val">lssass.exe (T1036 masquerading)</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Location</div><div class="we-ioc-val">Temp directory — not System32</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Technique</div><div class="we-ioc-val">C2 outbound connections</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Persistence</div><div class="we-ioc-val">Multiple file locations on disk</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Payload Delivery</div><div class="we-ioc-val">HTTP GET requests to C2</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Child Process</div><div class="we-ioc-val">Spawned to execute downloaded files</div></div>
-        </div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">MITRE ATT&CK Mapping</div>
-        <div class="writeup-pills">
-          <span class="writeup-pill green">T1036 — Masquerading</span>
-          <span class="writeup-pill green">T1055 — Process Injection</span>
-          <span class="writeup-pill green">T1071 — C2 via HTTP</span>
-          <span class="writeup-pill green">T1105 — Ingress Tool Transfer</span>
-          <span class="writeup-pill green">T1547 — Boot/Logon Persistence</span>
-        </div>
-      </div>
-      <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup/blob/main/Amadey%20Lab.md" target="_blank" class="gh-link">[gh] View full writeup on GitHub →</a>
-    </div>
-  </div>
+  </a>
 
   <!-- SILENT BREACH -->
-  <div class="writeup-card fade-up" onclick="toggleWriteup('silent')">
+  <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup/blob/main/Silent%20Breach%20Labs.md" target="_blank" class="writeup-card fade-up" style="display:block;text-decoration:none;">
     <div class="writeup-head">
       <div class="writeup-num">WR_002</div>
       <div class="writeup-meta">
         <div class="writeup-title">Silent Breach — Disk Forensics & Malware Decryption</div>
-        <div class="writeup-summary">Disk image forensics investigation using FTK Imager. Traced a malicious EXE download through browser history, extracted C2 IP addresses from Windows Mail artifacts, decoded an obfuscated PowerShell ransomware script, and successfully decrypted AES-256-CBC encrypted files using derived key and IV via OpenSSL.</div>
-        <div class="writeup-pills">
+        <div class="writeup-summary">Disk image forensics using FTK Imager. Traced a malicious EXE download through browser history, extracted C2 IPs from Windows Mail artifacts, decoded a reversed Base64 obfuscated PowerShell ransomware script, and decrypted AES-256-CBC encrypted files by reproducing the PBKDF2 key derivation with OpenSSL.</div>
+        <div class="writeup-pills" style="margin-top:12px">
           <span class="writeup-pill green">Disk Forensics</span>
           <span class="writeup-pill green">Malware Decryption</span>
           <span class="writeup-pill">FTK Imager</span>
           <span class="writeup-pill">CyberChef</span>
           <span class="writeup-pill">OpenSSL</span>
-          <span class="writeup-pill">PowerShell Analysis</span>
-          <span class="writeup-pill">T1486 · T1140</span>
+          <span class="writeup-pill">T1486 · T1140 · T1059.001</span>
         </div>
       </div>
       <div class="writeup-toggle">
-        <span class="writeup-arrow" id="arrow-silent">→</span>
+        <span class="writeup-arrow">↗</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:4px">github.com</span>
       </div>
     </div>
-    <div class="writeup-expand" id="expand-silent">
-      <div class="we-section">
-        <div class="we-label">Overview</div>
-        <div class="we-finding">A disk forensics investigation on a Windows image belonging to a user named Ethan. The investigation required tracing the download of a malicious executable, analyzing browser artifacts, extracting C2 IP addresses from Windows Mail data, reversing an obfuscated PowerShell encryption script, and decrypting AES-256-CBC encrypted files to recover the flag.</div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Investigation Steps</div>
-        <ol class="we-steps">
-          <li class="we-step"><span class="we-step-num">01</span>Imported the disk image into FTK Imager and located the malicious EXE file. Extracted the MD5 hash directly from FTK Imager's file properties for verification against threat intel databases.</li>
-          <li class="we-step"><span class="we-step-num">02</span>Identified the download URL by examining the Zone.Identifier (ZoneTransfer) alternate data stream attached to the malicious file — this Windows security feature records the URL source of downloaded files.</li>
-          <li class="we-step"><span class="we-step-num">03</span>Determined the download application by extracting and analyzing SQLite browser history databases from both Chrome and Microsoft Edge at their respective AppData paths using DB Browser for SQLite.</li>
-          <li class="we-step"><span class="we-step-num">04</span>Extracted the Windows Mail artifact file HxStore.hxd from the WindowsCommunicationsApps package directory. Analyzed it using Notepad++ with the HEX Editor plugin to extract three C2 IP addresses mentioned in an email.</li>
-          <li class="we-step"><span class="we-step-num">05</span>Used the Strings tool on the malicious EXE to extract a reversed Base64-encoded PowerShell script. Decoded it using two methods: CyberChef (Reverse + From Base64 recipe) and Linux echo command — revealing the encryption password and AES parameters.</li>
-          <li class="we-step"><span class="we-step-num">06</span>Reproduced the PBKDF2 key derivation process from the PowerShell script to extract the exact AES-256-CBC Key and IV values used for encryption — since OpenSSL could not derive them without replicating the original algorithm.</li>
-          <li class="we-step"><span class="we-step-num">07</span>Decrypted the encrypted PDF files (IMF-Secret.enc and IMF-Mission.enc) using OpenSSL with the derived key and IV, verified integrity with the file command, and recovered the secret flag from the decrypted PDFs.</li>
-        </ol>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Key Artifact Paths</div>
-        <div class="we-code">Chrome History:  \AppData\Local\Google\Chrome\User Data\Default\History
-Edge History:    \AppData\Local\Microsoft\Edge\User Data\Default\History
-Windows Mail:    \AppData\Local\Packages\microsoft.windowscommunicationsapps_8wekyb3d8bbwe\LocalState\HxStore.hxd
-Encrypted Files: C:\Users\ethan\Desktop\*.enc</div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Decryption Method</div>
-        <div class="we-code"># Step 1 — Reproduce key derivation (PBKDF2 / RFC2898)
-# Password and salt extracted from reversed Base64 PowerShell script
-# Algorithm: AES-256-CBC, iterations from script parameters
+  </a>
 
-# Step 2 — Decrypt using OpenSSL with derived key and IV
-openssl enc -d -aes-256-cbc -K &lt;hex_key&gt; -iv &lt;hex_iv&gt; -in IMF-Secret.enc -out IMF-Secret.pdf
-
-# Step 3 — Verify decryption
-file IMF-Secret.pdf</div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Key Findings</div>
-        <div class="we-grid">
-          <div class="we-ioc"><div class="we-ioc-type">Malicious File</div><div class="we-ioc-val">EXE with MD5 hash confirmed</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Download Source</div><div class="we-ioc-val">URL from Zone.Identifier ADS</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Browser Used</div><div class="we-ioc-val">Chrome / Edge SQLite history</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">C2 IPs</div><div class="we-ioc-val">3 IPs from HxStore.hxd email</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Encryption</div><div class="we-ioc-val">AES-256-CBC via PBKDF2</div></div>
-          <div class="we-ioc"><div class="we-ioc-type">Obfuscation</div><div class="we-ioc-val">Reversed Base64 PowerShell</div></div>
-        </div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">MITRE ATT&CK Mapping</div>
-        <div class="writeup-pills">
-          <span class="writeup-pill green">T1486 — Data Encrypted for Impact</span>
-          <span class="writeup-pill green">T1140 — Deobfuscate/Decode Files</span>
-          <span class="writeup-pill green">T1059.001 — PowerShell</span>
-          <span class="writeup-pill green">T1005 — Data from Local System</span>
-          <span class="writeup-pill green">T1566 — Phishing / Malicious Download</span>
-        </div>
-      </div>
-      <div class="we-section">
-        <div class="we-label">Key Lesson</div>
-        <div class="we-finding">Malware authors who use hardcoded passwords and static salts in encryption routines create recoverable ciphertexts. By extracting the script, reversing the Base64 obfuscation, and replicating the PBKDF2 key derivation, the encryption was fully reversed — highlighting the importance of randomized cryptographic parameters in secure implementations.</div>
-      </div>
-      <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup/blob/main/Silent%20Breach%20Labs.md" target="_blank" class="gh-link">[gh] View full writeup on GitHub →</a>
-    </div>
+  <!-- VIEW ALL -->
+  <div style="margin-top:16px" class="fade-up">
+    <a href="https://github.com/ZayarMgHtay/Blue-Team-Writeup" target="_blank" class="gh-link">[gh] View all writeups on GitHub →</a>
   </div>
 </section>
 
